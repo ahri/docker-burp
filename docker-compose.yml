@@ -1,0 +1,8 @@
+burp:
+    build: .
+
+    environment:
+        - BURP_LICENSE
+
+    volumes:
+        - .:/host_cur_dir

@@ -10,8 +10,14 @@ output()
     echo "$@"
 }
 
+cd /host_cur_dir
+
+if [ $# -gt 0 ]; then
+    java -jar /burp-config.jar "$@"
+fi
+
 mkfifo /tmp/ctrl
-tail -f /tmp/ctrl | java -jar "/host_cur_dir/$1" | while read line; do
+tail -f /tmp/ctrl | java -jar "/burp.jar" | while read line; do
     if [ "$line" = "Do you accept the license agreement? (y/n)" ]; then
         mute=0
         echo y >> /tmp/ctrl

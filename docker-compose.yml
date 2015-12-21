@@ -5,4 +5,8 @@ burp:
         - BURP_LICENSE
 
     volumes:
-        - .:/host_cur_dir
+        - ./burp.jar:/burp.jar
+        - ./:/host_cur_dir
+
+    ports:
+        - 8080:8080
